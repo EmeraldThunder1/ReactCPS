@@ -36,6 +36,11 @@ class CpsTestBox extends React.Component {
             this.setState({ message: this.state.clicks });
         } else {
             this.setState({ timer: timer });
+
+            let current = new Date();
+            if (((current.getTime() - this.lastClick.getTime())) > this.clickCooldown * 1000 ) {
+                this.setState({ message: "Click here to start" });
+            }
         }
     }
 
@@ -62,7 +67,6 @@ class CpsTestBox extends React.Component {
             if (this.lastClick != null) {
                 if (((current.getTime() - this.lastClick.getTime())) > this.clickCooldown * 1000 ) {
                     this.clickCooldown = 0;
-                    this.setState({ message: "Click here to start" });
                 }
             }
         } else {
