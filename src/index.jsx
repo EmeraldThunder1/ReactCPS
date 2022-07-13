@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css'
+import './index.css';
 
-let timer = 10
+let timer = 10;
 
 class CpsTestBox extends React.Component {
     constructor(props) {
@@ -26,7 +26,7 @@ class CpsTestBox extends React.Component {
                 this.setState({ inGame: false, endMessage: `You got ${this.state.clicks / this.startTimer} CPS (${this.state.clicks} in ${this.startTimer} seconds)` });
                 this.clickCooldown = 1;
 
-                this.setState({ timer: timer })
+                this.setState({ timer: timer });
             }
         }
     }
@@ -62,6 +62,7 @@ class CpsTestBox extends React.Component {
             if (this.lastClick != null) {
                 if (((current.getTime() - this.lastClick.getTime())) > this.clickCooldown * 1000 ) {
                     this.clickCooldown = 0;
+                    this.setState({ message: "Click here to start" });
                 }
             }
         } else {
